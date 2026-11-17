@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.DS_Store
+gray-and-sons-*-local-playback.html
+gray-and-sons-*-updated.html

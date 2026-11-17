@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gray &amp; Sons | Banner Studio</title>
+<link rel="stylesheet" href="source/dashboard.css">
+<script type="module" src="source/dashboard.js?v=campaigns"></script>
+</head>
+<body>
+<header class="top"><div><span>GRAY &amp; SONS JEWELERS</span><h1>Banner Studio</h1></div><span>HTML5 BANNERS</span></header>
+<main>
+<aside>
+  <form id="campaign-form">
+    <h2>Campaigns</h2>
+    <label>Campaign name <input id="campaign-name" required maxlength="100" value="Black Friday"></label>
+    <button type="submit" disabled>Save campaign</button>
+    <label>Saved campaigns <select id="campaign-list"><option value="">Choose a campaign</option></select></label>
+    <button type="button" class="secondary" id="open-campaign" disabled>Open campaign</button>
+    <p id="campaign-status" role="status"></p>
+  </form>
+  <form id="import-form">
+    <h2>Import products</h2>
+    <div id="urls"></div>
+    <div class="row">
+      <button class="secondary" type="button" id="add-url">Add URL</button>
+      <button type="submit">Add product</button>
+    </div>
+    <label id="product-label" for="products" hidden>Imported products</label>
+    <select id="products" hidden></select>
+    <img id="product-photo" alt="" width="96" height="96" hidden>
+    <button class="secondary" type="button" id="remove-product" hidden>Remove selected product</button>
+    <p id="status" role="status"></p>
+    <ul id="errors"></ul>
+  </form>
+  <form id="fields">
+    <h2>Creative fields</h2>
+    <label class="swatch">color-box <input name="color-box" type="color" value="#231f20"></label>
+    <div class="text-color-field">
+      <label>title-1 <input name="title-1" value="BLACK" maxlength="22"></label>
+      <label>Color <input name="title-1-color" type="color" value="#ee242d" aria-label="title-1 text color"></label>
+    </div>
+    <div class="text-color-field">
+      <label>title-2 <input name="title-2" value="FRIDAY" maxlength="22"></label>
+      <label>Color <input name="title-2-color" type="color" value="#ee242d" aria-label="title-2 text color"></label>
+    </div>
+    <div class="text-color-field">
+      <label>slogan <input name="slogan" value="BIG SAVINGS" maxlength="38"></label>
+      <label>Color <input name="slogan-color" type="color" value="#ffffff" aria-label="slogan text color"></label>
+    </div>
+    <div class="text-color-field">
+      <label>category <input name="category" value="LUXURY WATCHES &amp; ESTATE JEWELRY" maxlength="76"></label>
+      <label>Color <input name="category-color" type="color" value="#ffffff" aria-label="category text color"></label>
+    </div>
+    <fieldset><legend>cta-button</legend>
+    <label>Text <input name="cta-button" value="SHOP THE SALE" maxlength="32"></label>
+    <div class="pair"><label class="swatch">Color <input name="cta-color" type="color" value="#ee242d"></label>
+    <label class="swatch">Text color <input name="cta-text-color" type="color" value="#ffffff"></label></div>
+    </fieldset>
+    <div class="text-color-field">
+      <label>phone <input name="phone" type="tel" value="305.615.2244" maxlength="25"></label>
+      <label>Color <input name="phone-color" type="color" value="#ffffff" aria-label="phone text color"></label>
+    </div>
+    <small>The Gray &amp; Sons logo is fixed.</small>
+    <div class="row">
+      <label>Banner size <select id="edit-size"></select></label>
+      <button class="secondary" type="button" id="edit-layout">Edit layout</button>
+    </div>
+    <button class="secondary" type="reset">Reset creative</button>
+  </form>
+</aside>
+<div class="preview">
+  <div class="preview-head"><div><h2>Live previews</h2><p>Actual size · Generate ad to play the product sequence</p></div><div class="row"><button type="submit" form="import-form" id="generate">Generate ad</button><button class="secondary" type="button" id="new-size" disabled>Generate new size</button><button class="secondary" type="button" id="replay">Replay all</button><button type="button" id="download-all" disabled>Download All</button></div></div>
+  <div id="previews"></div>
+</div>
+</main>
+<dialog id="size-dialog" aria-labelledby="size-title">
+  <form id="size-form">
+    <h2 id="size-title">Generate new size</h2>
+    <div class="pair">
+      <label>Width (px) <input name="width" type="number" min="1" step="1" required></label>
+      <label>Height (px) <input name="height" type="number" min="1" step="1" required></label>
+    </div>
+    <div class="row">
+      <button type="submit">Create banner</button>
+      <button type="button" class="secondary" id="cancel-size">Cancel</button>
+    </div>
+    <p id="size-status" role="status"></p>
+  </form>
+</dialog>
+<dialog id="edit-dialog" aria-labelledby="edit-title">
+  <form method="dialog" id="edit-form">
+    <h2 id="edit-title">Edit banner</h2>
+    <label>Product display
+      <select id="edit-product-display"><option value="brand">Brand name</option><option value="photo">Product photo</option></select>
+    </label>
+    <div class="pair">
+      <label>Discount star size (% of original) <input id="edit-star-size" type="number" min="50" max="180" value="125" required></label>
+      <label>Discount star alignment <select id="edit-star-align"><option value="edge">Left edge</option><option value="original">Original position</option></select></label>
+    </div>
+    <button type="submit" value="apply">Apply changes</button>
+    <label for="edit-prompt">What would you like to change?</label>
+    <textarea id="edit-prompt" rows="5" placeholder="Describe the change to the layout or animation"></textarea>
+    <small>Copy the request and paste it into your Codex chat.</small>
+    <div class="row">
+      <button type="button" id="copy-edit">Copy request</button>
+      <button class="secondary" value="close" formnovalidate>Close</button>
+    </div>
+    <p id="edit-status" role="status"></p>
+  </form>
+</dialog>
+</body>
+</html>
